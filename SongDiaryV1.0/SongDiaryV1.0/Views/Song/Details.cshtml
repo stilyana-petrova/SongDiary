@@ -1,4 +1,4 @@
-﻿@model SongDiaryV1._0.Models.Song.SongVM
+﻿@model SongDiaryV1._0.Models.Song.SongIndexVM
 
 @{
     ViewData["Title"] = "Details";
@@ -23,17 +23,30 @@
             @Html.DisplayFor(model => model.Author)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SongTypeName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SongTypeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SongTempoName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SongTempoName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.YouTubeLink)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YouTubeLink)
+            <a href="@Html.DisplayFor(model => model.YouTubeLink)">Link In YouTube</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LyricsChords)
         </dt>
         <dd class="col-sm-10">
-            <textarea>@Html.DisplayFor(model => model.LyricsChords)</textarea>
+            @Html.DisplayFor(model => model.LyricsChords)
         </dd>
+        
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Capo)
         </dt>
@@ -49,3 +62,4 @@
     }
     <a asp-action="Index">Back to List</a>
 </div>
+

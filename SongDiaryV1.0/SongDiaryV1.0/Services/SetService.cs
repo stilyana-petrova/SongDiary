@@ -11,12 +11,14 @@ namespace SongDiaryV1._0.Services
         {
             _context = context;
         }
-        public bool Create(string name, DateTime datefortheset)
+        public bool Create(string name, DateTime datefortheset, string userId, int groupId)
         {
             Set item = new Set
             {
                 Name = name,
-                DateForTheSet = datefortheset
+                DateForTheSet = datefortheset, 
+                UserId = userId,
+                GroupId = groupId
             };
             _context.Sets.Add(item);
             return _context.SaveChanges() != 0;
@@ -55,7 +57,7 @@ namespace SongDiaryV1._0.Services
             return _context.SaveChanges() != 0;
         }
 
-        public bool Update(int setId, string name, DateTime datefortheset)
+        public bool Update(int setId, string name, DateTime datefortheset, string userId, int groupId)
         {
             var set = GetSetById(setId);
             if (set == default(Set))
@@ -64,6 +66,8 @@ namespace SongDiaryV1._0.Services
             }
             set.Name = name;
             set.DateForTheSet = datefortheset;
+            set.UserId = userId;
+            set.GroupId=groupId;
 
             _context.Update(set);
             return _context.SaveChanges() != 0;

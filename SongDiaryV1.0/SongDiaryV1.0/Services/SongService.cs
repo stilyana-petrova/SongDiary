@@ -11,12 +11,14 @@ namespace SongDiaryV1._0.Services
         {
             _context = context;
         }
-        public bool Create(string title, string author, string youtubelink, string lyricschords, int capo)
+        public bool Create(string title, string author, int songTypeId, int songTempoId, string youtubelink, string lyricschords, int capo)
         {
             Song item = new Song
             {
                 Title = title,
                 Author = author,
+                SongTypeId = songTypeId,
+                SongTempoId = songTempoId,
                 YouTubeLink = youtubelink,
                 LyricsChords = lyricschords,
                 Capo = capo
@@ -96,7 +98,7 @@ namespace SongDiaryV1._0.Services
             return _context.SaveChanges() != 0;
         }
 
-        public bool Update(int songId, string title, string author, string youtubelink, string lyricschords, int capo)
+        public bool Update(int songId, string title, string author, int songTypeId, int songTempoId, string youtubelink, string lyricschords, int capo)
         {
             var song = GetSongById(songId);
             if (song == default(Song))
@@ -105,6 +107,8 @@ namespace SongDiaryV1._0.Services
             }
             song.Title = title;
             song.Author = author;
+            song.SongTypeId = songTypeId;
+            song.SongTempoId = songTempoId;
             song.YouTubeLink = youtubelink;
             song.LyricsChords = lyricschords;
             song.Capo = capo;

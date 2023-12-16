@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace SongDiaryV1._0.Models.Song
 {
-    public class SongEditVM
+    public class SongIndexVM
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         [Display(Name = "Title")]
@@ -13,6 +13,16 @@ namespace SongDiaryV1._0.Models.Song
         [Display(Name = "Author")]
 
         public string? Author { get; set; }
+        [Required]
+        [Display(Name = "Song Category")]
+        public int SongTypeId { get; set; }
+        public string? SongTypeName { get; set; }
+
+        [Required]
+        [Display(Name = "Tempo")]
+        public int SongTempoId { get; set; }
+        public string? SongTempoName { get; set; }
+
 
         [Required]
         [Display(Name = "Link in YouTube")]

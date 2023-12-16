@@ -33,6 +33,8 @@ namespace SongDiaryV1._0
             builder.Services.AddTransient<IGroupService, GroupService>();
             builder.Services.AddTransient<ISetService, SetService>();
             builder.Services.AddTransient<ISongService, SongService>();
+            builder.Services.AddTransient<ISongTypeService, SongTypeService>();
+            builder.Services.AddTransient<ISongTempoService, SongTempoService>();
 
             builder.Services.AddControllersWithViews();
 

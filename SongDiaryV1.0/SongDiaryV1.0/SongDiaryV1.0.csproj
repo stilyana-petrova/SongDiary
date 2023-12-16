@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Event\" />
+    <Folder Include="Views\Set\" />
   </ItemGroup>
 
 </Project>

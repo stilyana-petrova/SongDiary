@@ -10,12 +10,21 @@ namespace SongDiaryV1._0.Domain
         public string? Title { get; set; }
         [Required]
         public string? Author { get; set; }
+
+        [Required]
+        public int SongTypeId { get; set; }
+        public virtual SongType SongType { get; set; }
+
+        [Required]
+        public int SongTempoId { get; set; }
+        public virtual SongTempo SongTempo { get; set; }
         [Required]
         public string? YouTubeLink { get; set; }
         [Required]
         public string? LyricsChords { get; set; }
 
         public int Capo { get; set; }
+
         public virtual ICollection<Folder> Folder { get; set; } = new List<Folder>();
         public virtual ICollection<Set> Set { get; set; } = new List<Set>();
 

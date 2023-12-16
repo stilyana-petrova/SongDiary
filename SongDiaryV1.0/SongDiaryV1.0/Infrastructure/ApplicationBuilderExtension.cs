@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity;
+using SongDiaryV1._0.Data;
 using SongDiaryV1._0.Domain;
 
 namespace SongDiaryV1._0.Infrastructure
@@ -14,8 +16,49 @@ namespace SongDiaryV1._0.Infrastructure
             await RoleSeeder(services);
             await SeedAdmin(services);
 
+            var dataType = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedSongType(dataType);
+
+            var datatempo = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedTempo(datatempo);
+
             return app;
         }
+
+        private static void SeedTempo(ApplicationDbContext datatempo)
+        {
+            if (datatempo.SongTempos.Any())
+            {
+                return;
+            }
+            datatempo.SongTempos.AddRange(new[]
+            {
+                new SongTempo{Name="Бавни"},
+                new SongTempo{Name="Бързи"}
+            });
+            datatempo.SaveChanges();
+        }
+
+        private static void SeedSongType(ApplicationDbContext dataType)
+        {
+            if (dataType.SongTypes.Any())
+            {
+                return;
+            }
+            dataType.SongTypes.AddRange(new[]
+            {
+                new SongType{Name="Песнарки"},
+                new SongType{Name="Авторски"},
+                new SongType{Name="Преведени"},
+                new SongType{Name="Еврейски"},
+                new SongType{Name="Български"},
+                new SongType{Name="Английски"},
+                new SongType{Name="Руски"},
+                
+            });
+            dataType.SaveChanges();
+        }
+
 
         private static async Task RoleSeeder(IServiceProvider serviceProvider)
         {

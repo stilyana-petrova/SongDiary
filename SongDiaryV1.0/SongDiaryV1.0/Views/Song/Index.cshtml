@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SongDiaryV1._0.Models.Song.SongVM>
+﻿@model IEnumerable<SongDiaryV1._0.Models.Song.SongIndexVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -30,16 +30,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Author)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YouTubeLink)
-            </th>
+          
 
 
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderBy(x=>x.Title))
         {
             <tr>
                 <td>
@@ -48,9 +46,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Author)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YouTubeLink)
-                </td>
+              
 
                 <td>
                     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
